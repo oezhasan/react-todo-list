@@ -1,25 +1,30 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React, { Component } from "react";
+import { AddTodoForm } from "./components/AddTodoForm.js";
+import { TodoList } from "./components/TodoList.js";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: [],
+    };
+
+    this.addTodoItem = this.addTodoItem.bind(this);
+  }
+
+  addTodoItem(todoItem) {
+    this.setState({
+      todos: this.state.todos.concat(todoItem),
+    });
+    console.log(this.todos);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <AddTodoForm addTodoItem={this.addTodoItem} />
+        <TodoList list={this.state.todos} />
+      </div>
+    );
+  }
 }
-
-export default App;
