@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import uniqid from "uniqid";
 
 export class AddTodoForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputTodo: "",
+      inputTodo: {
+        text: "",
+        id: uniqid(),
+        editable: "false",
+      },
     };
 
     //not needed, if handleChange would be a arrow function
@@ -13,15 +18,24 @@ export class AddTodoForm extends Component {
   }
 
   handleChange(e) {
-    this.setState({ inputTodo: e.target.value });
+    this.setState({
+      inputTodo: {
+        text: e.target.value,
+        id: this.state.inputTodo.id,
+        editable: this.state.inputTodo.editable,
+      },
+    });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const inputTodo = this.state.inputTodo;
     this.props.addTodoItem(this.state.inputTodo);
     this.setState({
-      inputTodo: "",
+      inputTodo: {
+        text: "",
+        id: uniqid(),
+        editable: "false",
+      },
     });
   }
 
@@ -29,7 +43,7 @@ export class AddTodoForm extends Component {
     return (
       <form>
         <input
-          value={this.state.inputTodo}
+          value={this.state.inputTodo.text}
           placeholder="name"
           id="mainInput"
           onChange={this.handleChange}
