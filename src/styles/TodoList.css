@@ -1,0 +1,47 @@
+:root {
+  --clr-dark: black;
+  --clr-light: azure;
+  --clr-accent: coral;
+}
+
+li {
+  display: flex;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 2rem;
+  background-color: var(--clr-dark);
+  list-style: none;
+  align-items: center;
+  gap: 2rem;
+  color: var(--clr-light);
+}
+
+.checked {
+  border-bottom: 10px solid red;
+  background-color: grey;
+}
+
+.edit {
+  background-color: grey;
+}
+
+.todoBtn {
+  background-color: var(--clr-accent);
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.todoBtn:hover {
+  filter: brightness(0.85);
+}
+
+.groupTodoBtn {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+}

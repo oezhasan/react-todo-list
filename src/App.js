@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { AddTodoForm } from "./components/AddTodoForm.js";
 import { TodoList } from "./components/TodoList.js";
+import "./styles/App.css";
 
 export default class App extends Component {
   constructor(props) {
@@ -27,10 +28,16 @@ export default class App extends Component {
   }
 
   editTodoItem(todoItem) {
+    let objIndex = this.state.todoList.findIndex(
+      (todo) => todo.id == todoItem.id
+    );
+    let tempArr = this.state.todoList;
+    tempArr[objIndex].editable === "false"
+      ? (tempArr[objIndex].editable = "true")
+      : (tempArr[objIndex].editable = "false");
+
     this.setState({
-      todoList: this.state.todoList.map((el) =>
-        el.id == todoItem.id ? (el.editable = "true") : el
-      ),
+      todoList: tempArr,
     });
   }
 

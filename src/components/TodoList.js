@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../styles/TodoList.css";
 
 export class TodoList extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ export class TodoList extends Component {
   };
 
   editTodo = (e) => {
+    console.log(e);
     this.props.editTodoItem(e);
   };
 
@@ -18,24 +20,32 @@ export class TodoList extends Component {
       <ul>
         {this.props.list.map((todo) => {
           return (
-            <li key={todo.id}>
+            <li
+              key={todo.id}
+              className={todo.editable === "true" ? "edit" : ""}
+            >
+              <input type="checkbox" />
               <span contentEditable={todo.editable} id="todoSpan">
                 {todo.text}
               </span>
-              <button
-                onClick={() => {
-                  this.deleteTodo(todo);
-                }}
-              >
-                Delete
-              </button>
-              <button
-                onClick={() => {
-                  this.editTodo(todo);
-                }}
-              >
-                Edit
-              </button>
+              <div className="groupTodoBtn">
+                <button
+                  className="todoBtn"
+                  onClick={() => {
+                    this.deleteTodo(todo);
+                  }}
+                >
+                  Delete
+                </button>
+                <button
+                  className="todoBtn"
+                  onClick={() => {
+                    this.editTodo(todo);
+                  }}
+                >
+                  Edit
+                </button>
+              </div>
             </li>
           );
         })}

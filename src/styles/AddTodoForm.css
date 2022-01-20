@@ -1,0 +1,24 @@
+form {
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  background-color: var(--clr-accent);
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+input {
+  width: 50%;
+  padding: 10px 22px;
+  box-sizing: border-box;
+  border: 2px solid var(--clr-accent);
+  border-radius: 4px;
+}

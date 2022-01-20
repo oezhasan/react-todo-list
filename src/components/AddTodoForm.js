@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import uniqid from "uniqid";
+import "../styles/AddTodoForm.css";
 
 export class AddTodoForm extends Component {
   constructor(props) {
@@ -29,6 +30,8 @@ export class AddTodoForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if (this.state.inputTodo.text == "") return;
+
     this.props.addTodoItem(this.state.inputTodo);
     this.setState({
       inputTodo: {
